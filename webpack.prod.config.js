@@ -1,5 +1,7 @@
 const {resolve} = require('path');
 const webpack = require('webpack');
+const DefinePlugin = webpack.DefinePlugin;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -10,8 +12,9 @@ module.exports = {
     ],
     output: {
         filename: 'main.js',
+        path: resolve(__dirname, 'dist')
     },
-    devtool: 'source-map',
+    devtool: false,
     module: {
         rules: [
             {
@@ -21,7 +24,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/,
-                use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+                use: ExtractTextPlugin.extract({
                         use: [
                             {
                                 loader: "css-loader" // translates CSS into CommonJS
@@ -30,9 +33,10 @@ module.exports = {
                                 loader: "sass-loader" // compiles Sass to CSS
                             }
                         ],
-                        fallback: "style-loader" // used when css not extracted
+                        // use style-loader in development
+                        fallback: "style-loader"
                     }
-                ))
+                )
             },
             {
                 test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)/,
@@ -41,9 +45,14 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.NamedModulesPlugin(),
-        // prints more readable module names in the browser console on HMR updates
-
+        new DefinePlugin({
+            'process.env': {
+                NODE_ENV: JSON.stringify('production')
+            }
+        }),
+        new UglifyJsPlugin({
+            sourceMap: false
+        }),
         new ExtractTextPlugin({filename: 'styles.css', allChunks: true})
     ],
 };

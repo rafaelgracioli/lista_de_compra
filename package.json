@@ -1,42 +1,39 @@
 {
-  "name": "lista_de_compra",
+  "name": "react-webpack-babel-kit-2",
   "version": "1.0.0",
-  "description": "Teste para front-end de Rafael Gracioli",
-  
-  "main": "server.js",
-
+  "description": "React Webpack 2.0 babel kit with bootstrap framework",
+  "main": "index.html",
   "scripts": {
-    "start": "node server.js",
-    "prestart": "npm run build",
-    "build": "webpack --config webpack.config.js --color -p --progress"
+    "start": "webpack-dev-server --progress --colors --hot --inline",
+    "start:dev": "webpack-dev-server --config ./webpack.dev.config.js  --progress --colors",
+    "build:dev": "webpack --config ./webpack.dev.config.js --progress --colors",
+    "build": "webpack -p --config ./webpack.prod.config.js --progress --colors"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rafaelgracioli/lista_de_compra.git"
-  },
-  "keywords": [
-    "Webpack 2",
-    "CSS Modules",
-    "SASS"
-  ],
-  "author": "Rafael Gracioli",
+  "author": "srinivasan",
   "license": "MIT",
-  
-  "homepage": "https://github.com/rafaelgracioli/lista_de_compra#readme",
-
   "devDependencies": {
-    "autoprefixer": "6.7.7",
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
     "babel-preset-es2015": "6.24.1",
-    "css-loader": "0.28.0",
-    "express": "4.15.2",
+    "babel-preset-react": "6.24.1",
+    "bootstrap-sass": "3.3.7",
+    "css-hot-loader": "1.1.1",
+    "css-loader": "0.28.4",
     "extract-text-webpack-plugin": "2.1.0",
-    "html-webpack-plugin": "2.28.0",
-    "node-sass": "4.5.2",
-    "postcss-loader": "1.3.3",
-    "sass-loader": "6.0.3",
-    "style-loader": "0.17.0",
-    "webpack": "2.4.1"
+    "file-loader": "0.11.2",
+    "node-sass": "4.5.3",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
+    "react-hot-loader": "3.0.0-beta.7",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
+    "uglifyjs-webpack-plugin": "^0.4.6",
+    "url-loader": "0.5.8",
+    "webpack": "2.6.1",
+    "webpack-dev-server": "2.4.5"
+  },
+  "dependencies": {
+    "es6-promise": "^4.1.1",
+    "isomorphic-fetch": "^2.2.1"
   }
 }

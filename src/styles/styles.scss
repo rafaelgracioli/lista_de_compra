@@ -1,0 +1,27 @@
+#react-container {
+  display:flex;
+  justify-content: center;
+}
+
+.item{
+
+  div{
+    display: inline-block;
+    border: 1px solid #dddddd;
+    padding: 4px;
+  }
+
+  .quantidade{
+    width: 50px;
+  }
+  .produto{
+    width: 180px;
+  }
+  .valor{
+    width: 100px;
+
+    &:before{
+      //content: 'R$ '
+    }
+  }
+}
