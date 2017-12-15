@@ -3,6 +3,14 @@
   justify-content: center;
 }
 
+.botoes{
+  text-align: right;
+
+  button{
+    margin-left: 5px;
+  }
+}
+
 .form{
   margin-top: 30px;
 
@@ -36,22 +44,43 @@
   }
 }
 
+.check{
+  button{
+    margin-top: 2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 0px;
+  }
+}
+
 
 .item{
+  margin-bottom: 15px;
+  padding: 10px 0px;;
+  border-bottom: 1px solid #dddddd;
 
   input{
-    width: 100%;
     height: 30px;
     border-radius: 0;
     border: 1px solid #dadada;
   }
 
-  .inline{
+  .qtd, .prod{
+    height: 30px;
+    vertical-align: middle;
+    font-size: 15px;
+    padding-top: 5px;
+  }
 
-    div{
-      display: inline-block;
-      border: 1px solid #dddddd;
-      padding: 4px;
+  .qtd{
+    input{
+      width: 20%
+    }
+  }
+  .prod{
+    input{
+      width: 80%
     }
   }
 
@@ -68,8 +97,4 @@
       //content: 'R$ '
     }
   }
-}
-
-.lista{
-  
 }

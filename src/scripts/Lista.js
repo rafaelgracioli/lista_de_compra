@@ -20,6 +20,7 @@ export default class Lista extends Component {
         this.add               = this.add.bind(this)
         this.edit              = this.edit.bind(this)
         this.save              = this.save.bind(this)
+        this.cancel            = this.cancel.bind(this)
         this.editProduto       = this.editProduto.bind(this)
         this.editQuantidade    = this.editQuantidade.bind(this)
         this.marcar            = this.marcar.bind(this)
@@ -33,15 +34,17 @@ export default class Lista extends Component {
                     (
                         <div className="col-md-12">
                             <div className="row">
-                                <div className="col-md-2 qtd">
-                                    <input type="Text" value={this.state.produto_edit.quantidade} onChange={this.editQuantidade}/>
+                                <div className="col-md-9">
+                                    <span className="qtd">< input type="Text" value={this.state.produto_edit.quantidade} onChange={this.editQuantidade}/></span>
+                                    <span className="prod"><input type="Text" value={this.state.produto_edit.produto}    onChange={this.editProduto}/></span>
                                 </div>
-                                <div className="col-md-6 prod">
-                                    <input type="Text" value={this.state.produto_edit.produto}    onChange={this.editProduto}/>
-                                </div>
-                                <div className="col-md-4 botoes">
-                                    <button type="button" className="btn btn-default" onClick={()=>{this.delete(id)}}>Delete</button>
-                                    <button type="button" className="btn btn-default" onClick={()=>{this.save(id)}}>salvar</button>
+                                <div className="col-md-3 botoes">
+                                    <button type="button" className="btn btn-danger" onClick={()=>{this.cancel(id)}}>
+                                        <span className="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" className="btn btn-success" onClick={()=>{this.save(id)}}>
+                                        <span className="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -50,25 +53,27 @@ export default class Lista extends Component {
                     (
                         <div className={`col-md-12 ${item.marcado ? 'marcado' : ''}`}>
                             <div className="row">
-                                <div className="col-md-2 qtd">
-                                    {item.quantidade}
-                                </div>
-                                <div className="col-md-6 prod">
-                                    {item.produto}
-                                </div>
-                                <div className="col-md-4 botoes">
-                                    <button type="button" className="btn btn-default" onClick={()=>{this.delete(id)}}>Delete</button>
-                                    <button type="button" className="btn btn-default" onClick={()=>{this.edit(id)}}>Editar</button>
+                                <div className="col-md-1 check">
                                     {item.marcado == true ?
                                         (
-                                            <button type="button" className="btn btn-default" onClick={()=>{this.desmarcar(id)}}>Desmarcar</button>
+                                            <button type="button" className="btn btn-default" onClick={()=>{this.desmarcar(id)}}>✔️</button>
                                         )
                                         :
                                         (
-                                            <button type="button" className="btn btn-default" onClick={()=>{this.marcar(id)}}>Marcar</button>
+                                            <button type="button" className="btn btn-default" onClick={()=>{this.marcar(id)}}>&nbsp;</button>
                                         )
                                     }
-                                    
+                                </div>
+                                <div className="col-md-8 qtd">
+                                    <span className="qtd"><b>{item.quantidade}</b></span>&nbsp; <span className="prod">{item.produto}</span>
+                                </div>
+                                <div className="col-md-3 botoes">
+                                    <button type="button" className="btn btn-danger" onClick={()=>{this.delete(id)}}>
+                                        <span className="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" className="btn btn-warning" onClick={()=>{this.edit(id)}}>
+                                        <span className="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                    </button>                                    
                                 </div>
                             </div>
                         </div>
@@ -151,6 +156,17 @@ export default class Lista extends Component {
             }
         )        
     }
+    cancel(){
+        this.setState(
+            {
+                edit: '',
+                produto_edit: {
+                    produto: '',
+                    quantidade: ''
+                }
+            }
+        ) 
+    }
 
     render() {
         return (
@@ -158,16 +174,18 @@ export default class Lista extends Component {
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2">
                         <div className="row form">
-                            <div className="col-md-4">
+                            <div className="col-md-3">
                                 <label>Qtd: </label>
                                 <input type={Text} className="qtd"  value={this.state.quantidade} onChange={this.valueQuantidade}/>
                             </div>
-                            <div className="col-md-6">
+                            <div className="col-md-7">
                                 <label>produto: </label>
                                 <input type={Text} className="prod" value={this.state.produto} onChange={this.valueproduto}/>
                             </div>
-                            <div className="col-md-2">
-                                <button type="button" className="btn btn-default" onClick={this.add}>Adicionar</button>
+                            <div className="col-md-2 botoes">
+                                <button type="button" className="btn btn-warning" onClick={this.add}>
+                                    <span className="glyphicon glyphicon-ok" aria-hidden="true"></span> Adicionar
+                                </button>
                             </div>
                         </div>
                         <h2>Lista</h2>
