@@ -3,12 +3,56 @@
   justify-content: center;
 }
 
+.form{
+  margin-top: 30px;
+
+  label{
+    margin-top: 6px;
+    position: absolute;
+    margin-left: 7px;
+  }
+
+  input{
+    width: 100%;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid #dadada;
+
+    &.qtd{
+      padding-left: 40px;
+    }
+
+    &.prod{
+      padding-left: 67px;
+    }
+  }
+}
+
+.marcado{
+  
+  .qtd, .prod{
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}
+
+
 .item{
 
-  div{
-    display: inline-block;
-    border: 1px solid #dddddd;
-    padding: 4px;
+  input{
+    width: 100%;
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid #dadada;
+  }
+
+  .inline{
+
+    div{
+      display: inline-block;
+      border: 1px solid #dddddd;
+      padding: 4px;
+    }
   }
 
   .quantidade{
@@ -24,4 +68,8 @@
       //content: 'R$ '
     }
   }
+}
+
+.lista{
+  
 }
