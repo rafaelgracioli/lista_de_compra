@@ -42,7 +42,6 @@ module.exports = {
     },
     plugins: [
         new webpack.NamedModulesPlugin(),
-        // prints more readable module names in the browser console on HMR updates
 
         new ExtractTextPlugin({filename: 'styles.css', allChunks: true})
     ],

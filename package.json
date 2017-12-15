@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-babel-kit-2",
+  "name": "lista_de_compras",
   "version": "1.0.0",
-  "description": "React Webpack 2.0 babel kit with bootstrap framework",
+  "description": "Teste para vaga de front-end do Rafael Gracioli",
   "main": "index.html",
   "scripts": {
     "start": "webpack-dev-server --progress --colors --hot --inline",
@@ -9,8 +9,8 @@
     "build:dev": "webpack --config ./webpack.dev.config.js --progress --colors",
     "build": "webpack -p --config ./webpack.prod.config.js --progress --colors"
   },
-  "author": "srinivasan",
-  "license": "MIT",
+  "author": "Rafael Gracioli",
+  "license": "",
   "devDependencies": {
     "babel-core": "6.24.1",
     "babel-loader": "7.0.0",
